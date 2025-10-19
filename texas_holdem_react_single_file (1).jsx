@@ -224,7 +224,16 @@ export default function TexasHoldem(){
     setPlayers(arr); setButton(0); setMessage("Práctica lista. Pulsa Nueva mano.");
   }
 
-  function draw(n){ const h=deck.slice(0,n); setDeck(deck.slice(n)); return h; }
+  function draw(n){
+    const count = Math.max(0, Math.floor(n));
+    let drawn = [];
+    setDeck(prevDeck => {
+      const take = Math.min(count, prevDeck.length);
+      drawn = prevDeck.slice(0, take);
+      return prevDeck.slice(take);
+    });
+    return drawn;
+  }
   function resetBets(){ setCurrentBet(0); setLastAggressor(null); setSomeoneChecked(false); setPlayers(ps=>ps.map(p=>({...p, committed:0}))); }
   function postBlinds(){ const n=players.length; const sb=(button+1)%n, bb=(button+2)%n; setPlayers(ps=> ps.map((p,i)=> i===sb? {...p, stack:p.stack-SB, committed:SB}: i===bb? {...p, stack:p.stack-BB, committed:BB}: p)); setCurrentBet(BB); setPot(v=>v+SB+BB); setMessage(`Ciegas: SB ${seatName(sb)} ${SB}, BB ${seatName(bb)} ${BB}`);} 
   function nextToActPractice(){ if(players.length===2){ return street==="preflop"? button: (button+1)%players.length; } const sb=(button+1)%players.length; const bb=(button+2)%players.length; return street==="preflop"? ((bb+1)%players.length) : ((button+1)%players.length); }
