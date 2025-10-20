@@ -7,7 +7,7 @@
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "lint": "eslint 'src/**/*.ts'",
     "format": "prettier --write 'src/**/*.{ts,json}'",
-    "migrate": "prisma migrate deploy --schema src/prisma/schema.prisma",
+    "migrate": "npm exec prisma -- migrate deploy --schema src/prisma/schema.prisma",
     "seed": "ts-node src/prisma/seed.ts",
     "test": "vitest run"
   },
