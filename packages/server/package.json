@@ -8,7 +8,7 @@
     "lint": "eslint 'src/**/*.ts'",
     "format": "prettier --write 'src/**/*.{ts,json}'",
     "migrate": "npm exec prisma -- migrate deploy --schema src/prisma/schema.prisma",
-    "seed": "ts-node src/prisma/seed.ts",
+    "seed": "npm exec prisma -- generate --schema src/prisma/schema.prisma && npm exec ts-node -- src/prisma/seed.ts",
     "test": "vitest run"
   },
   "dependencies": {
