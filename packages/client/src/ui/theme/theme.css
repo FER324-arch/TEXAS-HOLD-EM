@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Mono:wght@400;600&display=swap');
+
+:root {
+  --bg: #0c0f1a;
+  --panel: #141a2a;
+  --accent: #17e3ff;
+  --accent-alt: #ff2e8a;
+  --text: #f5f7ff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Roboto Mono', sans-serif;
+  background: radial-gradient(circle at top, rgba(23, 227, 255, 0.1), transparent 60%),
+    radial-gradient(circle at bottom, rgba(255, 46, 138, 0.1), transparent 60%), var(--bg);
+  color: var(--text);
+}
+
+.neon-theme {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-panel {
+  background: rgba(20, 26, 42, 0.85);
+  border: 1px solid rgba(23, 227, 255, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 960px;
+  width: 100%;
+  box-shadow: 0 0 24px rgba(23, 227, 255, 0.15);
+}
+
+button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+  color: var(--bg);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(23, 227, 255, 0.3);
+}
+
+input, select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(23, 227, 255, 0.2);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+h1, h2, h3 {
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.table-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.list-panel {
+  background: rgba(12, 15, 26, 0.7);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(255, 46, 138, 0.2);
+}
