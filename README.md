@@ -1,6 +1,6 @@
-# Neon Hold'em Pro
+# Hold'em Pro
 
-Neon Hold'em Pro es una experiencia 2D de Texas Hold'em futurista diseñada para partidas p2p con soporte de IA, economía interna auditable y panel administrativo.
+Hold'em Pro es una experiencia 2D de Texas Hold'em futurista diseñada para partidas p2p con soporte de IA, economía interna auditable y panel administrativo.
 
 ## Características clave
 
