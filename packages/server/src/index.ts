@@ -18,7 +18,19 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { path: '/signal', cors: { origin: '*' } });
-const logger = pino({ transport: { target: 'pino-pretty' } });
+const logger = (() => {
+  try {
+    return pino({
+      transport: {
+        target: 'pino-pretty',
+        options: { colorize: true, translateTime: 'SYS:standard' }
+      }
+    });
+  } catch (error) {
+    console.warn('pino-pretty not available, using basic logger');
+    return pino();
+  }
+})();
 
 app.use(cors());
 app.use(express.json());
