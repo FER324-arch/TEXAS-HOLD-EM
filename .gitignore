@@ -1,0 +1,11 @@
+/node_modules
+/dist
+/build
+/packages/*/node_modules
+/packages/*/dist
+/packages/*/build
+/.env
+/packages/server/prisma/dev.db
+coverage
+.DS_Store
+.vscode
