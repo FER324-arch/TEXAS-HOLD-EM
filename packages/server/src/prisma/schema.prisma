@@ -3,25 +3,26 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id           String   @id @default(cuid())
-  email        String   @unique
-  passwordHash String
-  nickname     String
-  role         String   @default("user")
-  createdAt    DateTime @default(now())
-  account      Account?
-  sessions     GameSession[]
+  id            String        @id @default(cuid())
+  email         String        @unique
+  passwordHash  String
+  nickname      String
+  role          String        @default("user")
+  createdAt     DateTime      @default(now())
+  account       Account?
+  sessions      GameSession[] @relation("UserSessions")
+  ledgerEntries LedgerEntry[]
 }
 
 model Account {
   id        String        @id @default(cuid())
   user      User?         @relation(fields: [userId], references: [id])
-  userId    String?
+  userId    String?       @unique
   balance   Int           @default(0)
   isLocked  Boolean       @default(false)
   ledger    LedgerEntry[]
@@ -42,6 +43,7 @@ model LedgerEntry {
 model GameSession {
   id           String     @id @default(cuid())
   roomId       String     @unique
+  hostUser     User       @relation("UserSessions", fields: [hostUserId], references: [id])
   hostUserId   String
   smallBlind   Int
   bigBlind     Int
